@@ -1,145 +1,629 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
+
 <head>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>links profile</title>
-    
-    <link rel="stylesheet" href="style.css">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>STIKA_0 | عالم الألعاب</title>
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #050509;
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* الخلفية */
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+
+      background:
+        radial-gradient(circle at 20% 20%, #4b006e55, transparent 30%),
+        radial-gradient(circle at 80% 40%, #ff008c33, transparent 30%),
+        radial-gradient(circle at 50% 90%, #18004a66, transparent 35%);
+
+      z-index: -1;
+    }
+
+
+    /* القائمة العلوية */
+
+    nav {
+      width: 100%;
+      height: 75px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 7%;
+
+      border-bottom: 1px solid #ffffff20;
+
+      background: #050509dd;
+      backdrop-filter: blur(10px);
+
+      position: fixed;
+      top: 0;
+      z-index: 1000;
+    }
+
+
+    /* الشعار */
+
+    .logo {
+      font-size: 30px;
+      font-weight: bold;
+      font-style: italic;
+      letter-spacing: 2px;
+    }
+
+    .logo span {
+      color: #ff1493;
+    }
+
+
+    /* روابط القائمة */
+
+    nav ul {
+      display: flex;
+      gap: 35px;
+      list-style: none;
+    }
+
+    nav ul a {
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    nav ul a:hover {
+      color: #ff1493;
+    }
+
+
+    /* زر القمر */
+
+    .dark-btn {
+      border: 1px solid #ffffff30;
+      background: transparent;
+      color: white;
+
+      width: 45px;
+      height: 45px;
+
+      border-radius: 12px;
+
+      cursor: pointer;
+      font-size: 18px;
+
+      transition: 0.3s;
+    }
+
+    .dark-btn:hover {
+      border-color: #ff1493;
+      box-shadow: 0 0 15px #ff149355;
+    }
+
+
+    /* الصفحة الرئيسية */
+
+    .hero {
+      min-height: 100vh;
+
+      padding: 130px 8% 60px;
+
+      display: flex;
+      flex-direction: column;
+
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      position: relative;
+    }
+
+
+    /* تأثير خلف الشعار */
+
+    .hero::before {
+      content: "";
+      position: absolute;
+
+      width: 600px;
+      height: 600px;
+
+      background: #7a00ff22;
+
+      filter: blur(100px);
+
+      border-radius: 50%;
+
+      z-index: -1;
+    }
+
+
+    /* الصورة الرئيسية */
+
+    .profile-image {
+      width: 160px;
+      height: 160px;
+
+      border-radius: 50%;
+      object-fit: cover;
+
+      border: 3px solid #ff1493;
+
+      box-shadow:
+        0 0 20px #ff1493,
+        0 0 50px #8000ff;
+
+      margin-bottom: 25px;
+
+      transition: 0.4s;
+    }
+
+    .profile-image:hover {
+      transform: scale(1.08) rotate(3deg);
+    }
+
+
+    /* اسم STIKA */
+
+    .hero h1 {
+      font-size: clamp(60px, 12vw, 150px);
+
+      font-style: italic;
+      letter-spacing: 5px;
+
+      text-shadow:
+        0 0 20px #ff0088,
+        0 0 60px #8000ff;
+    }
+
+    .hero h1 span {
+      color: #ff008c;
+    }
+
+
+    /* العنوان */
+
+    .hero h2 {
+      margin-top: 10px;
+      font-size: 28px;
+    }
+
+
+    /* الوصف */
+
+    .hero p {
+      margin-top: 20px;
+
+      color: #c9c9c9;
+
+      max-width: 600px;
+
+      line-height: 1.8;
+
+      font-size: 17px;
+    }
+
+
+    /* بطاقات التواصل */
+
+    .social-container {
+      display: grid;
+
+      grid-template-columns: repeat(4, 1fr);
+
+      gap: 20px;
+
+      width: 100%;
+      max-width: 1100px;
+
+      margin-top: 50px;
+    }
+
+
+    /* البطاقة */
+
+    .social-card {
+      position: relative;
+
+      background: linear-gradient(145deg, #11111a, #08080d);
+
+      padding: 35px 20px;
+
+      border-radius: 20px;
+
+      transition: 0.4s;
+
+      border: 2px solid var(--color);
+
+      box-shadow:
+        0 0 10px var(--color),
+        0 0 20px var(--color),
+        inset 0 0 10px #000;
+    }
+
+
+    /* الضوء المتحرك حول كامل البطاقة */
+
+    .social-card::before {
+      content: "";
+
+      position: absolute;
+
+      inset: -3px;
+
+      border-radius: 22px;
+
+      border: 2px solid var(--color);
+
+      box-shadow:
+        0 0 8px var(--color),
+        0 0 20px var(--color),
+        0 0 35px var(--color);
+
+      opacity: 0.7;
+
+      animation: borderGlow 2s infinite alternate;
+
+      pointer-events: none;
+    }
+
+
+    @keyframes borderGlow {
+
+      0% {
+        opacity: 0.3;
+        filter: brightness(0.7);
+      }
+
+      100% {
+        opacity: 1;
+        filter: brightness(1.5);
+      }
+
+    }
+
+
+    .social-card:hover {
+      transform: translateY(-10px) scale(1.03);
+
+      box-shadow:
+        0 0 20px var(--color),
+        0 0 45px var(--color),
+        0 0 70px var(--color);
+    }
+
+
+    /* ألوان الحسابات */
+
+    .instagram {
+      --color: #ff3d8d;
+    }
+
+    .tiktok {
+      --color: #00f2ea;
+    }
+
+    .youtube {
+      --color: #ff0000;
+    }
+
+    .discord {
+      --color: #7289da;
+    }
+
+
+    /* الأيقونات */
+
+    .social-card i {
+      font-size: 55px;
+      margin-bottom: 20px;
+      color: var(--color);
+
+      filter:
+        drop-shadow(0 0 10px var(--color));
+    }
+
+
+    /* العنوان */
+
+    .social-card h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+
+    /* الوصف */
+
+    .social-card p {
+      margin-bottom: 20px;
+      color: #aaa;
+    }
+
+
+    /* الأزرار */
+
+    .btn {
+      display: inline-block;
+
+      padding: 12px 25px;
+
+      border: 1px solid var(--color);
+
+      border-radius: 10px;
+
+      color: white;
+
+      text-decoration: none;
+
+      transition: 0.3s;
+    }
+
+
+    .btn:hover {
+      background: var(--color);
+
+      box-shadow:
+        0 0 20px var(--color);
+    }
+
+
+    /* الهاتف */
+
+    @media (max-width: 850px) {
+
+      nav ul {
+        display: none;
+      }
+
+      .social-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero h2 {
+        font-size: 22px;
+      }
+
+    }
+
+
+    @media (max-width: 500px) {
+
+      nav {
+        padding: 0 5%;
+      }
+
+      .logo {
+        font-size: 22px;
+      }
+
+      .social-container {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-right: 5%;
+        padding-left: 5%;
+      }
+
+      .profile-image {
+        width: 130px;
+        height: 130px;
+      }
+
+    }
+
+  </style>
+
 </head>
-<body bgcolor="#000000" background="foto/images (3).jfif">
-    
-<div id="gg">
-
-<video class="bg-video" autoplay muted loop>
-  <source src="foto/ved.mp4">
-</video>
-
- <img id="img1" src="foto/photo_2026-08-17_02-05-26.jpg" alt="">
-    
-<h1 id="h1" align="center"> _S T I K A_ 0 </h1>
-<ul>
-<li>
-<br>
-<button id="b1"
-onclick="window.open('https://www.instagram.com/0_stika_0/','_blank')">
-    <h3>INSTAGRAM </h3>
-        
-</button>
-
-</li>
 
 
+<body>
 
 
-<br>
+  <!-- القائمة العلوية -->
 
-<li>
-    <button  id="b2"
-    onclick="window.open('https://www.tiktok.com/@_stika_0?_r=1&_d=f2lm4chh7l796i&sec_uid=MS4wLjABAAAASnoPvh6kzGY9zT0nHUYzwxJ4WfwVf1pNBvKb5buS1Nu2RUS7b0O79h-HkkTBv-jH&share_author_id=7376387965201007649&sharer_language=fr&source=h5_m&u_code=eedgdhh5i1f5f8&timestamp=1779378832&user_id=7376387965201007649&sec_user_id=MS4wLjABAAAASnoPvh6kzGY9zT0nHUYzwxJ4WfwVf1pNBvKb5buS1Nu2RUS7b0O79h-HkkTBv-jH&item_author_type=1&utm_source=copy&utm_campaign=client_share&utm_medium=android&share_iid=7634968608002770710&share_link_id=9a331edf-44b1-47c2-a262-693d0c101f5e&share_app_id=1233&ugbiz_name=ACCOUNT&ug_btm=b8727%2Cb7360&social_share_type=5&enable_checksum=1','_blank')">
-<h3>
-TIK TOK
-</h3>
+  <nav>
+
+    <div class="logo">
+      STIKA_<span>0</span>
+    </div>
+
+
+    <ul>
+
+      <li>
+        <a href="#home">
+          الرئيسية
+        </a>
+      </li>
+
+      <li>
+        <a href="#social">
+          حساباتي
+        </a>
+      </li>
+
+    </ul>
+
+
+    <button class="dark-btn">
+      <i class="fa-solid fa-moon"></i>
     </button>
-</li>
+
+  </nav>
 
 
 
+  <!-- الصفحة الرئيسية -->
+
+  <main class="hero" id="home">
 
 
-<br>
+    <!-- الصورة -->
+    <!-- ضع صورة داخل مشروع GitHub ثم اكتب اسمها مكان profile.jpg -->
 
-<li>
-<button id="b3"
-    
-        
-        
-        
-        onclick="window.open('https://www.youtube.com/@ToonEdge-1 ','_blank')">
-        
-        
-        <h3>
-        
-        YOUTUBE
-    </h3>
-</button>
+    <img
+      src="foto/file_00000000b4108243bd3d070f35bf4121.png"
+      alt="STIKA_0"
+      class="profile-image"
+    >
 
 
-</li>
+    <h1>
+      STIKA_<span>0</span>
+    </h1>
 
 
-<br>
+    <h2>
+      🎮 عالم الألعاب والمحتوى
+    </h2>
 
 
-
-<li>
-<button id="b3"
-    
-        
-        
-        
-        onclick="window.open('https://discord.gg/DfPyeY5p7 ','_blank')">
-        
-        
-        <h3>
-        
-        DISCORD
-    </h3>
-</button>
-
-
-</li>
+    <p>
+      أشارك معكم أفضل لحظات الألعاب،
+      الميمز والتحديات وكل ما يتعلق
+      بعالم الألعاب.
+    </p>
 
 
 
+    <!-- الحسابات -->
+
+    <div class="social-container" id="social">
+
+
+      <!-- Instagram -->
+
+      <div class="social-card instagram">
+
+        <i class="fa-brands fa-instagram"></i>
+
+        <h3>INSTAGRAM</h3>
+
+        <p>
+          تابعني على إنستغرام
+        </p>
+
+        <a
+          href="https://www.instagram.com/0_stika_0?igsi=MWtvOTJmY2xra2M2NA=="
+          target="_blank"
+          class="btn">
+
+          زيارة الحساب
+
+        </a>
+
+      </div>
 
 
 
+      <!-- TikTok -->
 
-</ul>
+      <div class="social-card tiktok">
 
+        <i class="fa-brands fa-tiktok"></i>
 
+        <h3>TIKTOK</h3>
 
+        <p>
+          مقاطع قصيرة وميمز
+        </p>
 
-    
+        <a
+          href="https://tiktok.com/@_stika_0"
+          target="_blank"
+          class="btn">
 
+          زيارة الحساب
 
- </div>
+        </a>
 
- 
-
-
-
-
-
-
-
-
-
-
-
-
+      </div>
 
 
 
+      <!-- YouTube -->
 
- 
+      <div class="social-card youtube">
+
+        <i class="fa-brands fa-youtube"></i>
+
+        <h3>YOUTUBE</h3>
+
+        <p>
+          فيديوهات ومحتوى ألعاب
+        </p>
+
+        <a
+          href="https://www.youtube.com/@0stika0"
+          target="_blank"
+          class="btn">
+
+          زيارة القناة
+
+        </a>
+
+      </div>
 
 
 
-   
+      <!-- Discord -->
+
+      <div class="social-card discord">
+
+        <i class="fa-brands fa-discord"></i>
+
+        <h3>DISCORD</h3>
+
+        <p>
+          انضم إلى السيرفر
+        </p>
+
+        <a
+          href="https://discord.gg/DfPyeY5p7"
+          target="_blank"
+          class="btn">
+
+          دخول السيرفر
+
+        </a>
+
+      </div>
 
 
+    </div>
 
 
-
-
-</div>
-
-
-
+  </main>
 
 
 </body>
+
 </html>
